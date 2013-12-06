@@ -34,6 +34,9 @@ static AzureUser *_loggedInUser;
         NSString *resultString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         
         NSLog(@"resultString: %@", resultString);
+        
+        [self initUserWithToken:resultString];
+        
         success();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);

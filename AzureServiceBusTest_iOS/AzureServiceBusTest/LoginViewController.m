@@ -9,6 +9,8 @@
 #import "LoginViewController.h"
 #import "AzureUser.h"
 
+#define kLoggedInSegue @"loggedInSegue"
+
 @interface LoginViewController ()
 @property (nonatomic, strong) IBOutlet UILabel *userNameLabel;
 @end
@@ -37,7 +39,8 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [AzureUser authenticateAzureUserWithSuccess:^{
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        NSLog(@"success!");
+        
+        [self performSegueWithIdentifier:kLoggedInSegue sender:self];
     } failure:^(NSError *error) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         [UIAlertView alertViewWithTitle:@"Error" message:error.localizedDescription];
