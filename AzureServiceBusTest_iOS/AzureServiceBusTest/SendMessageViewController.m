@@ -37,7 +37,7 @@
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [AzureMessenger sendMessageToQueue:self.inputTextView.text success:^{
             [MBProgressHUD hideHUDForView:self.view animated:YES];
-            [UIAlertView alertViewWithTitle:@"Success!" message:@"Message successfully sent to queue"];
+            [UIAlertView alertViewWithTitle:@"Success!" message:@"Message successfully sent to the queue"];
         } failure:^(NSError *error) {
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             [UIAlertView alertViewWithTitle:@"Error" message:error.localizedDescription];

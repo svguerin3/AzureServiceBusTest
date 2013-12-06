@@ -11,12 +11,6 @@
 
 #define API_AUTHENTICATE_ENDPOINT   @"WRAPv0.9"
 
-#define kWrapScopeServiceBusSite        @"servicebus.windows.net"
-#define kAuthKeyWrapAccessToken         @"wrap_access_token"
-#define kAuthKeyWrapScope               @"wrap_scope"
-#define kAuthKeyWrapName                @"wrap_name"
-#define kAuthKeyWrapPassword            @"wrap_password"
-
 @implementation AzureUser
 
 static AzureUser *_loggedInUser;
@@ -31,10 +25,10 @@ static AzureUser *_loggedInUser;
 }
 
 + (void)authenticateAzureUserWithSuccess:(void (^)())success failure:(void (^)(NSError *error))failure {
-    NSString *wrapScopeParameter = [NSString stringWithFormat:@"http://%@.%@/", [AzureUtils fetchFromPlistWithKey:kPlistKeyServiceBusName], kWrapScopeServiceBusSite];
-    NSDictionary *parameters = @{kAuthKeyWrapScope: wrapScopeParameter,
-                                 kAuthKeyWrapName: [AzureUtils fetchFromPlistWithKey:kPlistKeyUserName],
-                                 kAuthKeyWrapPassword: [AzureUtils fetchFromPlistWithKey:kPlistKeyPassword]};
+    NSString *wrapScopeParameter = [NSString stringWithFormat:@"http://%@.servicebus.windows.net/", [AzureUtils fetchFromPlistWithKey:kPlistKeyServiceBusName]];
+    NSDictionary *parameters = @{@"wrap_scope": wrapScopeParameter,
+                                 @"wrap_name": [AzureUtils fetchFromPlistWithKey:kPlistKeyUserName],
+                                 @"wrap_password": [AzureUtils fetchFromPlistWithKey:kPlistKeyPassword]};
 
     [[AzureClient sharedClient] postPath:API_AUTHENTICATE_ENDPOINT parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *resultString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -51,8 +45,8 @@ static AzureUser *_loggedInUser;
     if ([authResponse length]) {
         NSArray *paramsArray = [authResponse componentsSeparatedByString:@"&"];
         for (NSString *paramString in paramsArray) {
-            if ([paramString rangeOfString:kAuthKeyWrapAccessToken].location != NSNotFound) {
-                returnVal = [paramString stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@=", kAuthKeyWrapAccessToken] withString:@""];
+            if ([paramString rangeOfString:@"wrap_access_token"].location != NSNotFound) {
+                returnVal = [paramString stringByReplacingOccurrencesOfString:@"wrap_access_token=" withString:@""];
                 break;
             }
         }
