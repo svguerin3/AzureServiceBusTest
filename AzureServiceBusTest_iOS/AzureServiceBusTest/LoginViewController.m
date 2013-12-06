@@ -12,7 +12,7 @@
 #define kLoggedInSegue @"loggedInSegue"
 
 @interface LoginViewController ()
-@property (nonatomic, strong) IBOutlet UILabel *userNameLabel;
+@property (nonatomic, weak) IBOutlet UILabel *userNameLabel;
 @end
 
 @implementation LoginViewController
@@ -30,7 +30,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
     self.userNameLabel.text = [NSString stringWithFormat:@"Username: %@", [AzureUtils fetchFromPlistWithKey:kPlistKeyUserName]];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [AzureUser logoutUser];
 }
 
 #pragma mark - IBActions

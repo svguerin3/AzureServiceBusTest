@@ -1,5 +1,5 @@
 //
-//  MenuViewController.h
+//  SendMessageViewController.h
 //  AzureServiceBusTest
 //
 //  Created by Vincent Guerin on 12/5/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MenuViewController : UIViewController
+@interface SendMessageViewController : UIViewController
 
 @end

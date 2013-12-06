@@ -34,7 +34,8 @@
 		C1ED9DCD1851617200AE6CD5 /* AzureUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C1ED9DCC1851617200AE6CD5 /* AzureUser.m */; };
 		C1ED9DD11851663B00AE6CD5 /* UIAlertView+Azure.m in Sources */ = {isa = PBXBuildFile; fileRef = C1ED9DD01851663B00AE6CD5 /* UIAlertView+Azure.m */; };
 		C1ED9DD31851683F00AE6CD5 /* Azure-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1ED9DD21851683F00AE6CD5 /* Azure-Info.plist */; };
-		C1ED9DD6185172F800AE6CD5 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1ED9DD5185172F800AE6CD5 /* MenuViewController.m */; };
+		C1ED9DDA18518DA300AE6CD5 /* AzureMessenger.m in Sources */ = {isa = PBXBuildFile; fileRef = C1ED9DD918518DA300AE6CD5 /* AzureMessenger.m */; };
+		C1ED9DE318518F7500AE6CD5 /* SendMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1ED9DE218518F7500AE6CD5 /* SendMessageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,8 +121,10 @@
 		C1ED9DCF1851663B00AE6CD5 /* UIAlertView+Azure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Azure.h"; sourceTree = "<group>"; };
 		C1ED9DD01851663B00AE6CD5 /* UIAlertView+Azure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Azure.m"; sourceTree = "<group>"; };
 		C1ED9DD21851683F00AE6CD5 /* Azure-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Azure-Info.plist"; sourceTree = "<group>"; };
-		C1ED9DD4185172F800AE6CD5 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
-		C1ED9DD5185172F800AE6CD5 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		C1ED9DD818518DA300AE6CD5 /* AzureMessenger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AzureMessenger.h; sourceTree = "<group>"; };
+		C1ED9DD918518DA300AE6CD5 /* AzureMessenger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AzureMessenger.m; sourceTree = "<group>"; };
+		C1ED9DE118518F7500AE6CD5 /* SendMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMessageViewController.h; sourceTree = "<group>"; };
+		C1ED9DE218518F7500AE6CD5 /* SendMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMessageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,8 +202,8 @@
 				C1ED9D6A18512E0900AE6CD5 /* Main_iPad.storyboard */,
 				C1ED9DC118514E9100AE6CD5 /* LoginViewController.h */,
 				C1ED9DC218514E9100AE6CD5 /* LoginViewController.m */,
-				C1ED9DD4185172F800AE6CD5 /* MenuViewController.h */,
-				C1ED9DD5185172F800AE6CD5 /* MenuViewController.m */,
+				C1ED9DE118518F7500AE6CD5 /* SendMessageViewController.h */,
+				C1ED9DE218518F7500AE6CD5 /* SendMessageViewController.m */,
 				C1ED9DCE1851662E00AE6CD5 /* Categories and Utils */,
 				C1ED9DC418514FE300AE6CD5 /* Data */,
 				C1ED9D911851473C00AE6CD5 /* Vendor */,
@@ -275,6 +278,8 @@
 				C1ED9DC618514FF700AE6CD5 /* AzureClient.m */,
 				C1ED9DCB1851617200AE6CD5 /* AzureUser.h */,
 				C1ED9DCC1851617200AE6CD5 /* AzureUser.m */,
+				C1ED9DD818518DA300AE6CD5 /* AzureMessenger.h */,
+				C1ED9DD918518DA300AE6CD5 /* AzureMessenger.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -428,10 +433,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1ED9DC318514E9100AE6CD5 /* LoginViewController.m in Sources */,
-				C1ED9DD6185172F800AE6CD5 /* MenuViewController.m in Sources */,
 				C1ED9DD11851663B00AE6CD5 /* UIAlertView+Azure.m in Sources */,
 				C1ED9DCA185152E200AE6CD5 /* AzureUtils.m in Sources */,
 				C1ED9DC718514FF700AE6CD5 /* AzureClient.m in Sources */,
+				C1ED9DE318518F7500AE6CD5 /* SendMessageViewController.m in Sources */,
+				C1ED9DDA18518DA300AE6CD5 /* AzureMessenger.m in Sources */,
 				C1ED9DCD1851617200AE6CD5 /* AzureUser.m in Sources */,
 				C1ED9D6618512E0900AE6CD5 /* AppDelegate.m in Sources */,
 				C1ED9D6218512E0900AE6CD5 /* main.m in Sources */,

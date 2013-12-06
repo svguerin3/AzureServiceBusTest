@@ -9,16 +9,20 @@
 #import "AzureClient.h"
 #import "AzureUser.h"
 
-static NSString * const kBaseAPIURL = @"https://dorfbus-sb.accesscontrol.windows.net/";
-
 @implementation AzureClient
 
 + (AzureClient *)sharedClient {
     static AzureClient *_sharedClient = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _sharedClient = [[AzureClient alloc] initWithBaseURL:[NSURL URLWithString:kBaseAPIURL]];
-    });
+
+    if ([AzureUser currentUser]) {
+        NSString *apiURL = [NSString stringWithFormat:@"https://%@.servicebus.Windows.net/%@/", [AzureUtils fetchFromPlistWithKey:kPlistKeyServiceBusName],
+                                [AzureUtils fetchFromPlistWithKey:kPlistKeyServiceQueueName]];
+        _sharedClient = [[AzureClient alloc] initWithBaseURL:[NSURL URLWithString:apiURL]];
+    } else {
+        NSString *apiURL = [NSString stringWithFormat:@"https://%@-sb.accesscontrol.windows.net/",
+                                [AzureUtils fetchFromPlistWithKey:kPlistKeyServiceBusName]];
+        _sharedClient = [[AzureClient alloc] initWithBaseURL:[NSURL URLWithString:apiURL]];
+    }
     
     return _sharedClient;
 }
