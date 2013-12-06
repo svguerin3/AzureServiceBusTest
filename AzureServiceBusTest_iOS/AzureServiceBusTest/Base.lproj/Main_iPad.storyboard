@@ -52,7 +52,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="Login" id="Y6t-zJ-uBa"/>
+                    <navigationItem key="navigationItem" title="Login" id="Y6t-zJ-uBa">
+                        <barButtonItem key="backBarButtonItem" title="Logout" id="nMD-xa-fX4"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="userNameLabel" destination="I0N-3O-Sw2" id="ClW-nd-N8A"/>
                         <segue destination="Spx-m2-sHh" kind="push" identifier="loggedInSegue" id="Bxh-dF-d8m"/>
