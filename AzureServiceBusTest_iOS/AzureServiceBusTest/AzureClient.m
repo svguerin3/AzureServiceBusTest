@@ -9,28 +9,19 @@
 #import "AzureClient.h"
 #import "AzureUser.h"
 
+static NSString * const kBaseAPIURL = @"https://dorfbus-sb.accesscontrol.windows.net/";
+
 @implementation AzureClient
 
 + (AzureClient *)sharedClient {
     static AzureClient *_sharedClient = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedClient = [[AzureClient alloc] initWithBaseURL:[NSURL URLWithString:@""]]; // TODO: Read from plist
+        _sharedClient = [[AzureClient alloc] initWithBaseURL:[NSURL URLWithString:kBaseAPIURL]];
     });
     
     return _sharedClient;
 }
-
-//- (id)initWithBaseURL:(NSURL *)url {
-//    self = [super initWithBaseURL:url];
-//    if (!self) {
-//        return nil;
-//    }
-//
-//    [AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObjects:@"application/x-www-form-urlencoded", nil]];
-//    
-//    return self;
-//}
 
 - (void)postPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
     NSMutableDictionary *allParameters = [parameters mutableCopy];

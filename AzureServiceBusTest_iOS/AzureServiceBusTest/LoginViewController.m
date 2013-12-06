@@ -28,16 +28,18 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
-    self.userNameLabel.text = [AzureUtils fetchFromPlistWithKey:kPlistKeyUserName];
+    self.userNameLabel.text = [NSString stringWithFormat:@"Username: %@", [AzureUtils fetchFromPlistWithKey:kPlistKeyUserName]];
 }
 
 #pragma mark - IBActions
 
 - (IBAction)loginButtonPressed:(id)sender {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [AzureUser authenticateAzureUserWithSuccess:^{
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         NSLog(@"success!");
     } failure:^(NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         [UIAlertView alertViewWithTitle:@"Error" message:error.localizedDescription];
     }];
 }

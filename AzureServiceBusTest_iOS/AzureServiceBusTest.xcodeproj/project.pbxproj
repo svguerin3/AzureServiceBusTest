@@ -33,6 +33,7 @@
 		C1ED9DCA185152E200AE6CD5 /* AzureUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C1ED9DC9185152E200AE6CD5 /* AzureUtils.m */; };
 		C1ED9DCD1851617200AE6CD5 /* AzureUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C1ED9DCC1851617200AE6CD5 /* AzureUser.m */; };
 		C1ED9DD11851663B00AE6CD5 /* UIAlertView+Azure.m in Sources */ = {isa = PBXBuildFile; fileRef = C1ED9DD01851663B00AE6CD5 /* UIAlertView+Azure.m */; };
+		C1ED9DD31851683F00AE6CD5 /* Azure-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1ED9DD21851683F00AE6CD5 /* Azure-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		C1ED9DCC1851617200AE6CD5 /* AzureUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AzureUser.m; sourceTree = "<group>"; };
 		C1ED9DCF1851663B00AE6CD5 /* UIAlertView+Azure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Azure.h"; sourceTree = "<group>"; };
 		C1ED9DD01851663B00AE6CD5 /* UIAlertView+Azure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Azure.m"; sourceTree = "<group>"; };
+		C1ED9DD21851683F00AE6CD5 /* Azure-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Azure-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				C1ED9D5D18512E0900AE6CD5 /* AzureServiceBusTest-Info.plist */,
+				C1ED9DD21851683F00AE6CD5 /* Azure-Info.plist */,
 				C1ED9D5E18512E0900AE6CD5 /* InfoPlist.strings */,
 				C1ED9D6118512E0900AE6CD5 /* main.m */,
 				C1ED9D6318512E0900AE6CD5 /* AzureServiceBusTest-Prefix.pch */,
@@ -399,6 +402,7 @@
 				C1ED9D6C18512E0900AE6CD5 /* Main_iPad.storyboard in Resources */,
 				C1ED9D7118512E0900AE6CD5 /* Images.xcassets in Resources */,
 				C1ED9D6918512E0900AE6CD5 /* Main_iPhone.storyboard in Resources */,
+				C1ED9DD31851683F00AE6CD5 /* Azure-Info.plist in Resources */,
 				C1ED9D6018512E0900AE6CD5 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

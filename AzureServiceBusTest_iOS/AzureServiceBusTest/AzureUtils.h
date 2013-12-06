@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-#define kPlistKeyEndPoint @"Azure Endpoint"
-#define kPlistKeyUserName @"Azure Username"
-#define kPlistKeyPassword @"Azure Password"
+#define kPlistKeyServiceBusName     @"Service Bus Name"
+#define kPlistKeyServiceQueueName   @"Service Queue Name"
+#define kPlistKeyUserName           @"Azure Username"
+#define kPlistKeyPassword           @"Azure Password"
 
 @interface AzureUtils : NSObject
 

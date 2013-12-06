@@ -8,18 +8,13 @@
 
 #import "AzureUtils.h"
 
+#define kPlistFileName  @"Azure-Info"
+
 @implementation AzureUtils
 
 + (NSString *)fetchFromPlistWithKey:(NSString *)keyString {
-    NSArray *plistArrayOfDictionaries = [[NSArray alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"AzureServiceBusTest-Info" ofType:@"plist"]];
-    for (NSDictionary *plistDict in plistArrayOfDictionaries) {
-        NSString *resultValueString = [plistDict objectForKey:keyString];
-        if (resultValueString) {
-            return resultValueString;
-        }
-    }
-    
-    return @"";
+    NSDictionary *plistDictionary = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:kPlistFileName ofType:@"plist"]];
+    return [plistDictionary objectForKey:keyString];
 }
 
 @end
