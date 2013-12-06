@@ -15,7 +15,8 @@
     static AzureClient *_sharedClient = nil;
 
     if ([AzureUser currentUser]) {
-        NSString *apiURL = [NSString stringWithFormat:@"https://%@.servicebus.Windows.net/%@/", [AzureUtils fetchFromPlistWithKey:kPlistKeyServiceBusName],
+        NSString *apiURL = [NSString stringWithFormat:@"https://%@.servicebus.Windows.net/%@/",
+                                [AzureUtils fetchFromPlistWithKey:kPlistKeyServiceBusName],
                                 [AzureUtils fetchFromPlistWithKey:kPlistKeyServiceQueueName]];
         _sharedClient = [[AzureClient alloc] initWithBaseURL:[NSURL URLWithString:apiURL]];
     } else {
