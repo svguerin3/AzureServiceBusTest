@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import <WindowsAzureMessaging/WindowsAzureMessaging.h>
 
 @implementation AppDelegate
 
