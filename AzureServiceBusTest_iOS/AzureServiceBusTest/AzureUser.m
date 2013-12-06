@@ -10,6 +10,7 @@
 #import "AzureClient.h"
 
 #define API_AUTHENTICATE_ENDPOINT   @"WRAPv0.9"
+#define kAccessTokenAuthKey         @"wrap_access_token"
 
 @implementation AzureUser
 
@@ -32,15 +33,27 @@ static AzureUser *_loggedInUser;
 
     [[AzureClient sharedClient] postPath:API_AUTHENTICATE_ENDPOINT parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *resultString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        
-        NSLog(@"resultString: %@", resultString);
-        
-        [self initUserWithToken:resultString];
-        
+
+        [self initUserWithToken:[self fetchTokenFromAuthResponse:resultString]];
         success();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
     }];
+}
+
++ (NSString *)fetchTokenFromAuthResponse:(NSString *)authResponse {
+    NSString *returnVal = @"";
+    if ([authResponse length]) {
+        NSArray *paramsArray = [authResponse componentsSeparatedByString:@"&"];
+        for (NSString *paramString in paramsArray) {
+            if ([paramString rangeOfString:kAccessTokenAuthKey].location != NSNotFound) {
+                returnVal = [paramString stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@=", kAccessTokenAuthKey] withString:@""];
+                break;
+            }
+        }
+    }
+    
+    return returnVal;
 }
 
 + (void)logoutUser {
