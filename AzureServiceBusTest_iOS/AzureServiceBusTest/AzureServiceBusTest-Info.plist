@@ -38,6 +38,12 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>Azure Endpoint</key>
+	<string>http://dorfbus.servicebus.windows.net/</string>
+	<key>Azure Username</key>
+	<string>owner</string>
+	<key>Azure Password</key>
+	<string></string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
