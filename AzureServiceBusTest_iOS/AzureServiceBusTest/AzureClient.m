@@ -34,8 +34,11 @@
         allParameters = [[NSMutableDictionary alloc] init];
     }
     if ([AzureUser currentUser]) {
-        NSLog(@"token: %@", [NSString stringWithFormat:@"WRAP access_token=\"%@\"", [[AzureUser currentUser] azureToken]]);
-        [self setAuthorizationHeaderWithToken:[NSString stringWithFormat:@"WRAP access_token=\"%@\"", [[AzureUser currentUser] azureToken]]];
+        NSString *authHeaderString = [NSString stringWithFormat:@"WRAP access_token=\"%@\"", [[AzureUser currentUser] azureToken]];
+        NSLog(@"authHeaderString: %@", authHeaderString);
+        //[self setAuthorizationHeaderWithToken:authHeaderString];
+        [self setDefaultHeader:@"Authorization" value:authHeaderString];
+        
     }
     [super postPath:path parameters:allParameters success:success failure:failure];
 }
