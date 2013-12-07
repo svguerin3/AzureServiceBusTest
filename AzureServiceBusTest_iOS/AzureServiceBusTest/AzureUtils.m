@@ -8,7 +8,7 @@
 
 #import "AzureUtils.h"
 
-#define kPlistFileName  @"Azure-Info"
+#define kPlistFileName  @"AzureLogin-Info"
 
 @implementation AzureUtils
 
