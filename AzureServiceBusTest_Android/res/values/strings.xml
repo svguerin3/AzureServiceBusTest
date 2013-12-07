@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AzureServiceBusTest</string>
+    <string name="login">Login</string>
+    <string name="send_message">Send Message</string>
+    <string name="no_text_inputted_error">Please input a message to send</string>
 </resources>
