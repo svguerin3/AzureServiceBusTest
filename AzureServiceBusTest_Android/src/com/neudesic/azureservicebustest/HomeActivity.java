@@ -34,7 +34,9 @@ public class HomeActivity extends RoboActivity {
 
             @Override
             public void onClick(View view) {
-                AzureUser.currentUser(HomeActivity.this).authenticateUser(new AsyncHttpResponseHandler() {
+                final AzureUser currentUser = AzureUser.currentUser(HomeActivity.this);
+
+                currentUser.authenticateUser(new AsyncHttpResponseHandler() {
                     @Override
                     public void onStart() {
                         super.onStart();
@@ -48,7 +50,7 @@ public class HomeActivity extends RoboActivity {
                     public void onSuccess(String content) {
                         super.onSuccess(content);
 
-                        Log.d(TAG, "success!  response: " + content);
+                        currentUser.setTokenFromAuthString(content);
 
                         Intent intent = new Intent(HomeActivity.this, SendMessageActivity.class);
                         startActivity(intent);

@@ -1,6 +1,8 @@
 package com.neudesic.azureservicebustest;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,6 +10,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import com.neudesic.azureservicebustest.asynchttp.AsyncHttpResponseHandler;
+import com.neudesic.azureservicebustest.data.AzureMessenger;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
 
@@ -40,7 +44,39 @@ public class SendMessageActivity extends RoboActivity {
             @Override
             public void onClick(View view) {
                 if (messageInputEditText.getText().length() > 0) {
-                    // TODO: Implement
+                    AzureMessenger.sendMessageToQueue(SendMessageActivity.this, messageInputEditText.getText().toString(), new AsyncHttpResponseHandler() {
+                        public ProgressDialog progressDialog;
+
+                        @Override
+                        public void onStart() {
+                            super.onStart();
+
+                            progressDialog = new ProgressDialog(SendMessageActivity.this);
+                            progressDialog.setMessage(getString(R.string.sending_message));
+                            progressDialog.show();
+                        }
+
+                        @Override
+                        public void onSuccess(String content) {
+                            super.onSuccess(content);
+
+                            Toast.makeText(SendMessageActivity.this, getString(R.string.success_message_to_queue), Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onFailure(Throwable error, String content) {
+                            super.onFailure(error, content);
+
+                            Log.d("SVG", "content: " + content);
+                            Toast.makeText(SendMessageActivity.this, "Error: " + error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            super.onFinish();
+                            progressDialog.hide();
+                        }
+                    });
                 } else {
                     Toast.makeText(SendMessageActivity.this, getString(R.string.no_text_inputted_error), Toast.LENGTH_SHORT).show();
                 }

@@ -5,4 +5,6 @@
     <string name="send_message">Send Message</string>
     <string name="no_text_inputted_error">Please input a message to send</string>
     <string name="logging_in">Logging in...</string>
+    <string name="success_message_to_queue">Successfully sent message to the queue!</string>
+    <string name="sending_message">Sending Message...</string>
 </resources>

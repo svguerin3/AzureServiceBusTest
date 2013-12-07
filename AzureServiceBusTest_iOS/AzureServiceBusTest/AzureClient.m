@@ -33,6 +33,7 @@
     if (allParameters == nil) {
         allParameters = [[NSMutableDictionary alloc] init];
     }
+
     if ([AzureUser currentUser]) {
         NSString *authHeaderString = [[NSString stringWithFormat:@"WRAP access_token=\"%@\"", [[AzureUser currentUser] azureToken]] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         [self setDefaultHeader:@"Authorization" value:authHeaderString];

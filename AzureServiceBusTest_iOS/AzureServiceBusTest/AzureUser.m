@@ -45,7 +45,7 @@ static AzureUser *_loggedInUser;
     if ([authResponse length]) {
         NSArray *paramsArray = [authResponse componentsSeparatedByString:@"&"];
         for (NSString *paramString in paramsArray) {
-            if ([paramString rangeOfString:@"wrap_access_token"].location != NSNotFound) {
+            if ([paramString rangeOfString:@"wrap_access_token="].location != NSNotFound) {
                 returnVal = [paramString stringByReplacingOccurrencesOfString:@"wrap_access_token=" withString:@""];
                 break;
             }

@@ -35,14 +35,27 @@ public class AzureUser {
         params.put("wrap_name", properties.getProperty("AzureUsername"));
         params.put("wrap_password", properties.getProperty("AzurePassword"));
 
-        AzureClient.getInstance(context).post(context, API_AUTHENTICATE_ENDPOINT, params, asyncHttpResponseHandler);
+        AzureClient.getInstance(context).post(context, API_AUTHENTICATE_ENDPOINT, params, null, asyncHttpResponseHandler);
     }
 
     public String getToken() {
         return azureToken;
     }
 
-    public void setToken(String azureToken) {
-        this.azureToken = azureToken;
+    public void setTokenFromAuthString(String authString) {
+        this.azureToken = fetchTokenFromAuthString(authString);
+    }
+
+    private String fetchTokenFromAuthString(String authString) {
+        String returnVal = "";
+
+        String[] paramsStrings = authString.split("&");
+        for (String paramString : paramsStrings) {
+            if (paramString.contains("wrap_access_token=")) {
+                returnVal = paramString.replace("wrap_access_token=", "");
+                break;
+            }
+        }
+        return returnVal;
     }
 }

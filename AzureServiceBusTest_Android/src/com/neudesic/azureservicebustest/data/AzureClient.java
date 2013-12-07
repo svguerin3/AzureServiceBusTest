@@ -32,11 +32,11 @@ public class AzureClient {
         return instance;
     }
 
-    public void get(String endPoint, RequestParams params, AsyncHttpResponseHandler responseHandler) {
-        client.get(getAbsoluteUrl(endPoint), params, responseHandler);
-    }
+    public void post(Context context, String url, RequestParams params, String authHeaderString, AsyncHttpResponseHandler responseHandler) {
+        if (authHeaderString != null) {
+            client.addHeader("Authorization", "WRAP access_token=\"" + authHeaderString + "\"");
+        }
 
-    public void post(Context context, String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
         client.post(context, getAbsoluteUrl(url), params, responseHandler);
     }
 

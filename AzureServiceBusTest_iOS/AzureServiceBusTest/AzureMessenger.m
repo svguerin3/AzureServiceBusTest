@@ -14,6 +14,8 @@
 @implementation AzureMessenger
 
 + (void)sendMessageToQueue:(NSString *)messageString success:(void (^)())success failure:(void (^)(NSError *error))failure {
+    // TODO: set messageString to request body
+    
     [[AzureClient sharedClient] postPath:API_MESSAGES_ENDPOINT parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *resultString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         
