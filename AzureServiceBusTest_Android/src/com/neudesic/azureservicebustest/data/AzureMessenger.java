@@ -15,7 +15,7 @@ public class AzureMessenger {
     private static final String TAG = "AzureMessenger";
 
     public static void sendMessageToQueue(Context context, String message, AsyncHttpResponseHandler asyncHttpResponseHandler) {
-        // TODO: set message to request body
+        // TODO: set message to request body, change to use: https://github.com/AsyncHttpClient/async-http-client
 
         try {
             AzureClient.getInstance(context).post(context,
