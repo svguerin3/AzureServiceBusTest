@@ -7,22 +7,23 @@
 //
 
 #import "AzureMessenger.h"
-#import "AzureClient.h"
+#import "AzureDataManager.h"
+#import "AzureUser.h"
 
 #define API_MESSAGES_ENDPOINT   @"messages"
 
 @implementation AzureMessenger
 
 + (void)sendMessageToQueue:(NSString *)messageString success:(void (^)())success failure:(void (^)(NSError *error))failure {
-    // TODO: set messageString to request body
+    NSString *baseUrlString = [NSString stringWithFormat:@"https://%@.servicebus.Windows.net/%@/",
+                        [AzureUtils fetchFromPlistWithKey:kPlistKeyServiceBusName],
+                        [AzureUtils fetchFromPlistWithKey:kPlistKeyServiceQueueName]];
     
-    [[AzureClient sharedClient] postPath:API_MESSAGES_ENDPOINT parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSString *resultString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        
-        NSLog(@"resultString: %@", resultString);
-        
+    NSString *authHeaderString = [[NSString stringWithFormat:@"WRAP access_token=\"%@\"", [[AzureUser currentUser] azureToken]] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    [[AzureDataManager sharedInstance] postMethodWithBaseUrl:baseUrlString endPoint:API_MESSAGES_ENDPOINT parameters:nil requestBody:messageString authHeaderString:authHeaderString success:^(NSString *responseString) {
         success();
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSError *error) {
         failure(error);
     }];
 }

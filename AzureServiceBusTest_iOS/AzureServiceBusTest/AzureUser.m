@@ -7,7 +7,7 @@
 //
 
 #import "AzureUser.h"
-#import "AzureClient.h"
+#import "AzureDataManager.h"
 
 #define API_AUTHENTICATE_ENDPOINT   @"WRAPv0.9"
 
@@ -25,17 +25,18 @@ static AzureUser *_loggedInUser;
 }
 
 + (void)authenticateAzureUserWithSuccess:(void (^)())success failure:(void (^)(NSError *error))failure {
+    NSString *baseUrlString = [NSString stringWithFormat:@"https://%@-sb.accesscontrol.windows.net/",
+                                   [AzureUtils fetchFromPlistWithKey:kPlistKeyServiceBusName]];
+    
     NSString *wrapScopeParameter = [NSString stringWithFormat:@"http://%@.servicebus.windows.net/", [AzureUtils fetchFromPlistWithKey:kPlistKeyServiceBusName]];
     NSDictionary *parameters = @{@"wrap_scope": wrapScopeParameter,
                                  @"wrap_name": [AzureUtils fetchFromPlistWithKey:kPlistKeyUserName],
                                  @"wrap_password": [AzureUtils fetchFromPlistWithKey:kPlistKeyPassword]};
 
-    [[AzureClient sharedClient] postPath:API_AUTHENTICATE_ENDPOINT parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSString *resultString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-
-        [self initUserWithToken:[self fetchTokenFromAuthResponse:resultString]];
+    [[AzureDataManager sharedInstance] postMethodWithBaseUrl:baseUrlString endPoint:API_AUTHENTICATE_ENDPOINT parameters:parameters requestBody:nil authHeaderString:nil success:^(NSString *responseString) {
+        [self initUserWithToken:[self fetchTokenFromAuthResponse:responseString]];
         success();
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSError *error) {
         failure(error);
     }];
 }

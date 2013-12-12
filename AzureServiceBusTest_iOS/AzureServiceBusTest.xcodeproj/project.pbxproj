@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1C16418185A422800D70E85 /* AzureDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C16417185A422800D70E85 /* AzureDataManager.m */; };
 		C1ED9D5618512E0900AE6CD5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1ED9D5518512E0900AE6CD5 /* Foundation.framework */; };
 		C1ED9D5818512E0900AE6CD5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1ED9D5718512E0900AE6CD5 /* CoreGraphics.framework */; };
 		C1ED9D5A18512E0900AE6CD5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1ED9D5918512E0900AE6CD5 /* UIKit.framework */; };
@@ -29,7 +30,6 @@
 		C1ED9DBF185148A100AE6CD5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1ED9DBA185148A100AE6CD5 /* Security.framework */; };
 		C1ED9DC0185148A100AE6CD5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1ED9DBB185148A100AE6CD5 /* SystemConfiguration.framework */; };
 		C1ED9DC318514E9100AE6CD5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1ED9DC218514E9100AE6CD5 /* LoginViewController.m */; };
-		C1ED9DC718514FF700AE6CD5 /* AzureClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C1ED9DC618514FF700AE6CD5 /* AzureClient.m */; };
 		C1ED9DCA185152E200AE6CD5 /* AzureUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C1ED9DC9185152E200AE6CD5 /* AzureUtils.m */; };
 		C1ED9DCD1851617200AE6CD5 /* AzureUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C1ED9DCC1851617200AE6CD5 /* AzureUser.m */; };
 		C1ED9DD11851663B00AE6CD5 /* UIAlertView+Azure.m in Sources */ = {isa = PBXBuildFile; fileRef = C1ED9DD01851663B00AE6CD5 /* UIAlertView+Azure.m */; };
@@ -84,6 +84,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C1C16416185A422800D70E85 /* AzureDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AzureDataManager.h; sourceTree = "<group>"; };
+		C1C16417185A422800D70E85 /* AzureDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AzureDataManager.m; sourceTree = "<group>"; };
 		C1ED9D5218512E0900AE6CD5 /* AzureServiceBusTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AzureServiceBusTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1ED9D5518512E0900AE6CD5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C1ED9D5718512E0900AE6CD5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -112,8 +114,6 @@
 		C1ED9DBB185148A100AE6CD5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C1ED9DC118514E9100AE6CD5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C1ED9DC218514E9100AE6CD5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		C1ED9DC518514FF700AE6CD5 /* AzureClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AzureClient.h; sourceTree = "<group>"; };
-		C1ED9DC618514FF700AE6CD5 /* AzureClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AzureClient.m; sourceTree = "<group>"; };
 		C1ED9DC8185152E200AE6CD5 /* AzureUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AzureUtils.h; sourceTree = "<group>"; };
 		C1ED9DC9185152E200AE6CD5 /* AzureUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AzureUtils.m; sourceTree = "<group>"; };
 		C1ED9DCB1851617200AE6CD5 /* AzureUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AzureUser.h; sourceTree = "<group>"; };
@@ -274,8 +274,8 @@
 		C1ED9DC418514FE300AE6CD5 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				C1ED9DC518514FF700AE6CD5 /* AzureClient.h */,
-				C1ED9DC618514FF700AE6CD5 /* AzureClient.m */,
+				C1C16416185A422800D70E85 /* AzureDataManager.h */,
+				C1C16417185A422800D70E85 /* AzureDataManager.m */,
 				C1ED9DCB1851617200AE6CD5 /* AzureUser.h */,
 				C1ED9DCC1851617200AE6CD5 /* AzureUser.m */,
 				C1ED9DD818518DA300AE6CD5 /* AzureMessenger.h */,
@@ -435,10 +435,10 @@
 				C1ED9DC318514E9100AE6CD5 /* LoginViewController.m in Sources */,
 				C1ED9DD11851663B00AE6CD5 /* UIAlertView+Azure.m in Sources */,
 				C1ED9DCA185152E200AE6CD5 /* AzureUtils.m in Sources */,
-				C1ED9DC718514FF700AE6CD5 /* AzureClient.m in Sources */,
 				C1ED9DE318518F7500AE6CD5 /* SendMessageViewController.m in Sources */,
 				C1ED9DDA18518DA300AE6CD5 /* AzureMessenger.m in Sources */,
 				C1ED9DCD1851617200AE6CD5 /* AzureUser.m in Sources */,
+				C1C16418185A422800D70E85 /* AzureDataManager.m in Sources */,
 				C1ED9D6618512E0900AE6CD5 /* AppDelegate.m in Sources */,
 				C1ED9D6218512E0900AE6CD5 /* main.m in Sources */,
 				C1ED9D951851473C00AE6CD5 /* MBProgressHUD.m in Sources */,

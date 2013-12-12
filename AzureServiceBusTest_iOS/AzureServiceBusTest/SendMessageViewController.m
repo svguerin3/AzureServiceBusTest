@@ -32,6 +32,8 @@
     [self.inputTextView becomeFirstResponder];
 }
 
+#pragma mark - IBActions
+
 - (IBAction)sendButtonPressed:(id)sender {
     if ([self.inputTextView.text length] > 0) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
